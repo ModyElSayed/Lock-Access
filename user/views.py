@@ -23,7 +23,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            return redirect("lock:index")
+            return redirect("lock:locks")
         else:
             return render(request, "user/login.html")
 

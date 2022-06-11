@@ -5,10 +5,17 @@
 {% block body %}
     <h1>Search</h1>
     <form method="get">
-        {{ filter.form.as_p }}
-        <input type="submit" />
+        <div class="form-floating m-3">
+            {{ filter.form.card_holder_id }}
+            <label for="id_card_holder_id">Card Id</label>
+        </div>
+        <div class="form-floating m-3">
+            {{ filter.form.card_holder_name }}
+            <label for="id_card_holder_name">Card Holder Name</label>
+        </div>
+        <button type="submit" class="btn btn-success ms-3">Search</button>
     </form>
     {% for obj in filter.qs %}
-        {{ obj.card_holder_id }} - {{ obj.card_holder_name }}<br/>
+        {% include 'lock/card.html' with card_number=obj.card_holder_id user_name=obj.card_holder_name user_type=obj.access_level %}
     {% endfor %}
 {% endblock %}

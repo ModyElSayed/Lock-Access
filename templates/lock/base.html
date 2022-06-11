@@ -15,9 +15,8 @@
 
 <body>
     <nav class="nav mt-3">
-      <a class="nav-link fs-5" href="{% url 'lock:index' %}">Home</a>
+      <a class="nav-link fs-5" href="{% url 'lock:locks' %}">Home</a>
       {% if user.is_authenticated %}
-          <a class="nav-link fs-5" href="{% url 'lock:locks' %}">Locks</a>
           <a class="nav-link fs-5" href="{% url 'lock:cards' %}">Cards</a>
           <a class="nav-link fs-5" href="{% url 'lock:search' %}">Search</a>
           <a class="nav-link fs-5" href="{% url 'user:logout' %}">Logout</a>
