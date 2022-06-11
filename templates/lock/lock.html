@@ -1,0 +1,47 @@
+<div class="container height-100 d-flex mt-3">
+    <div class="lock p-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+            <img src="https://www.impact-con.com/ah.jpg" style="border-radius: 5px" width="75" alt="company_logo">
+        </div>
+
+        <div>
+            <form method="post" action="{% url 'lock:remove_lock' lock_name=lock_name %}">
+                {% csrf_token %}
+                <button class="btn btn-light" style="border-radius: 20px; color: red;">X</button>
+            </form>
+        </div>
+        </div>
+        <div class=" mt-5 px-2 number d-flex justify-content-between">
+            <span>{{ lock_name|capfirst }}</span>
+        </div>
+
+        <div class="px-2 mt-4 d-flex justify-content-between align-items-center">
+            <div class="user-details">
+                <span>{{ user_name|capfirst }}</span>
+            </div>
+        </div>
+
+        {% if total < 2 and cards|length != 0 %}
+        <div class="dropdown px-2 mt-3">
+            <form method="post" action="{% url 'lock:assign_card_to_lock' lock_name %}">
+                {% csrf_token %}
+                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Assign Card</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for card in cards %}
+                        <li><input class="dropdown-item" type="submit" name="card_number" value="{{ card.card_id }}"/></li>
+                    {% endfor %}
+                </ul>
+            </form>
+        </div>
+        {% endif %}
+
+        {% if number_of_cards != 0 %}
+            <form method="post" class="px-2 mt-2" action="{% url 'lock:remove_lock' lock_name=lock_name %}">
+                {% csrf_token %}
+                <button class="btn btn-light text-danger">Remove Card</button>
+            </form>
+        {% endif %}
+
+    </div>
+</div>

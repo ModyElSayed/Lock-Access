@@ -1,0 +1,28 @@
+<div class="container height-100 d-flex mt-3">
+    <div class="card p-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+            <img src="https://www.impact-con.com/ah.jpg" style="border-radius: 5px" width="75" alt="company_logo">
+        </div>
+
+        <div>
+            <form method="post" action="{% url 'lock:remove_card' card_number %}">
+                {% csrf_token %}
+                <button class="btn btn-light" style="border-radius: 20px; color: red;">X</button>
+            </form>
+        </div>
+        </div>
+        <div class=" mt-5 px-2 number d-flex justify-content-between">
+            <span>{{ card_number }}</span>
+        </div>
+
+        <div class="px-2 mt-4 d-flex justify-content-between align-items-center">
+            <div class="user-details">
+                <span>{{ user_name|capfirst }}</span>
+            </div>
+            <div class="user-details">
+                <span>{{ user_type }}</span>
+            </div>
+        </div>
+    </div>
+</div>

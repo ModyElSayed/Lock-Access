@@ -1,0 +1,44 @@
+.card{
+    background: #ca652e;
+    height:250px;
+    width:430px;
+    border-radius:10px;
+    position:relative;
+}
+
+.card:after{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    background-color:#fff;
+    opacity:0.3;
+    border-radius:50%;
+    left:35%;
+    top:60px;
+}
+
+.lock{
+    background: #ca652e;
+    height:345px;
+    width:250px;
+    border-radius:10px;
+    position:relative;
+}
+
+.number{
+    font-size:36px;
+    font-weight:400;
+    color:#fff;
+}
+
+.user-details span{
+    font-size:20px;
+    color:#fff;
+}
+
+.lock-button {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}

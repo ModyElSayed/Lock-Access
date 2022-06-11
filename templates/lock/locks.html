@@ -1,0 +1,22 @@
+{% extends 'lock/base.html' %}
+
+{% block title %}Cards{% endblock %}
+
+{% block body %}
+    <h1>Locks</h1>
+    <p class="fs-5 m-3">{{ lock_count }}</p>
+    {% if locks|length < 2 %}
+        <form method="post" class="m-3" action="{% url 'lock:create_lock' %}">
+            {% csrf_token %}
+            <p class="text-danger">{{ error }}</p>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="lock-name" name="lock_name" placeholder="Lock Name">
+                <label for="lock-name">Lock Name</label>
+            </div>
+            <button class="btn btn-success mt-3" type="submit">Create New Lock</button>
+        </form>
+    {% endif %}
+    {% for lock in locks %}
+        {% include 'lock/lock.html' with lock_name=lock.lock_name user_name=lock.user_name cards=cards total=lock.total %}
+    {% endfor %}
+{% endblock %}

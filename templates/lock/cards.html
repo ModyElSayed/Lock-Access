@@ -1,0 +1,24 @@
+{% extends 'lock/base.html' %}
+
+{% block title %}Cards{% endblock %}
+
+{% block body %}
+    <h1>Cards</h1>
+    <p class="fs-5 m-3">{{ card_count }}</p>
+    {% if cards|length < 5 %}
+        <div class="dropdown m-3">
+            <form method="post" action="{% url 'lock:create_card' %}">
+                {% csrf_token %}
+                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Create New Card</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><input class="dropdown-item" type="submit" name="access" value="Admin"/></li>
+                    <li><input class="dropdown-item" type="submit" name="access" value="User"/></li>
+                </ul>
+            </form>
+        </div>
+
+    {% endif %}
+    {% for card in cards %}
+        {% include 'lock/card.html' with user_name=card.card_holder_name user_type=card.access_level card_number=card.card_id %}
+    {% endfor %}
+{% endblock %}
