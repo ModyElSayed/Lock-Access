@@ -17,6 +17,6 @@
         </form>
     {% endif %}
     {% for lock in locks %}
-        {% include 'lock/lock.html' with lock_name=lock.lock_name user_name=lock.user_name cards=cards total=lock.total %}
+        {% include 'lock/lock.html' with lock_name=lock.lock_name user_name=lock.user_name cards=cards total=lock.total used_cards=lock.used_cards %}
     {% endfor %}
 {% endblock %}

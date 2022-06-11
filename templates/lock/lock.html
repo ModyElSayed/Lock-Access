@@ -36,10 +36,15 @@
         </div>
         {% endif %}
 
-        {% if number_of_cards != 0 %}
-            <form method="post" class="px-2 mt-2" action="{% url 'lock:remove_lock' lock_name=lock_name %}">
+        {% if total > 0 %}
+            <form method="post" class="px-2 mt-2" action="{% url 'lock:remove_assigned_card' lock_name %}">
                 {% csrf_token %}
-                <button class="btn btn-light text-danger">Remove Card</button>
+                <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Remove Card</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for used_card in used_cards %}
+                        <li><input class="dropdown-item" type="submit" name="card_number" value="{{ used_card.card_id }}"/></li>
+                    {% endfor %}
+                </ul>
             </form>
         {% endif %}
 

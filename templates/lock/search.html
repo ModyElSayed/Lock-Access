@@ -1,0 +1,14 @@
+{% extends 'lock/base.html' %}
+
+{% block title %}Cards{% endblock %}
+
+{% block body %}
+    <h1>Search</h1>
+    <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+    {% for obj in filter.qs %}
+        {{ obj.card_holder_id }} - {{ obj.card_holder_name }}<br/>
+    {% endfor %}
+{% endblock %}
