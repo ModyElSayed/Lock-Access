@@ -106,7 +106,7 @@ def remove_assigned_card(request, lock_name):
         card = Card.objects.get(card_holder_id=card_number)
 
         try:
-            lock_card = LockCard.objects.create(card=card, lock=lock)
+            lock_card = LockCard.objects.get(card=card, lock=lock)
             lock_card.delete()
         except ValidationError:
             return redirect('lock:locks')
