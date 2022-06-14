@@ -1,7 +1,8 @@
 # Lock Access
 An smart access lock is a device that can be used to lock and unlock a door lock. This app is hosted on PythonAnyWhere: [modyelsayed.pythonanywhere.com](https://modyelsayed.pythonanywhere.com).
 
-<img src="https://github.com/ModyElSayed/Access-Lock/blob/master/lock_access/screenshots/cards.png"><br/>
+<img src="https://github.com/ModyElSayed/Lock-Access/blob/master/screenshots/cards.png"><br/>
+
 
 ### Specifications
 - **New Lock**: Users can create up to 2 new locks. and can assign up to 2 cards for each lock.
