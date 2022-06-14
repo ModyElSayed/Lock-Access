@@ -5,7 +5,7 @@ app_name = 'lock'
 
 urlpatterns = [
     path('cards/', views.get_cards, name='cards'),
-    path('locks/', views.get_locks, name='locks'),
+    path('', views.get_locks, name='locks'),
     path('search/', views.search, name='search'),
 
     path('create_lock/', views.create_lock, name='create_lock'),
